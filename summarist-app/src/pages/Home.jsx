@@ -1,13 +1,33 @@
-function Home() {
+import { useNavigate } from 'react-router-dom';
+import './home.css'; // keep this import near the top
+
+export default function Home() {
+  const navigate = useNavigate();
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Home Page</h1>
-      <p>This will be the landing page</p>
-      <a href="/for-you" style={{ color: 'blue', textDecoration: 'underline' }}>
-        Go to For You Page →
-      </a>
-    </div>
+    <>
+      {/* NAV */}
+      <nav className="nav">
+        <div className="nav__wrapper">
+          <figure className="nav__img--mask">
+            <img className="nav__img" src="/assets/logo.png" alt="Summarist" />
+          </figure>
+
+          <ul className="nav__list--wrapper">
+            <li
+              className="nav__list nav__list--login"
+              onClick={() => navigate('/for-you')}
+            >
+              Login
+            </li>
+            <li className="nav__list nav__list--disabled" title="Coming soon">About</li>
+            <li className="nav__list nav__list--disabled" title="Coming soon">Contact</li>
+            <li className="nav__list nav__list--disabled" title="Coming soon">Help</li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* ...rest of Home sections... */}
+    </>
   );
 }
-
-export default Home;

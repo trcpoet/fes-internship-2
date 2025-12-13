@@ -1,6 +1,8 @@
 /* src/index.css */
-:root{ --sidebar-w: 140px; }
-
+:root{
+  --page-max: 1070px;   /* change this to tighten/widen the page */
+  --side-pad: 24px;     /* left/right breathing room */
+}
 /* base */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Roboto,system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif}
 body{max-width:100%;overflow-x:hidden;background:#fff}
@@ -39,9 +41,18 @@ img{overflow-clip-margin:content-box;overflow:clip}
 .sidebar__icon--wrapper svg{width:18px;height:18px}
 .sidebar__link--text{font-size:13px}
 
-/* centered content */
-.row{max-width:1070px;width:100%;margin:0 auto;padding:0 24px}
-.container{padding:28px 0}
+/* shared layout primitives */
+.row{
+  max-width: var(--page-max);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--side-pad);
+}
+
+.container{
+  padding: 40px 0;
+  width: 100%;
+}
 
 /* headings */
 .for-you__title{font-size:22px;font-weight:700;color:#032b41;margin:8px 0 16px}
