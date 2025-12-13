@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ForYou from './pages/ForYou';
 import BookDetail from './pages/BookDetail';
@@ -8,7 +8,6 @@ import Settings from './pages/Settings';
 
 function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/for-you" element={<ForYou />} />
@@ -17,7 +16,6 @@ function App() {
         <Route path="/choose-plan" element={<ChoosePlan />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
-    </BrowserRouter>
   );
 }
 

@@ -133,7 +133,7 @@ img{
 }
 
 
-.btn{
+.auth .btn{
   background-color: #2bd97c;
   color: #032b41;
   width: 100%;
@@ -162,3 +162,79 @@ img{
   align-items: center;
   justify-content: center;
 }
+
+
+/* Card */
+
+/* Optional primary button (for Home page) */
+.btn--primary{ background:#2bd97c; color:#032b41; border-color:#2bd97c; }
+
+/* FILE: src/index.css  (append/replace this block) */
+
+/* FIX: .sidebar__overlay was missing a closing brace */
+.sidebar__overlay--hidden { opacity: 0; pointer-events: none; }
+
+.sidebar__overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #3a4649; transition: opacity .4s ease; z-index: 10;
+  opacity: .65; pointer-events: auto;
+}
+
+/* Modal overlay/card — matches solution structure */
+.auth__wrapper {
+  position: fixed; inset: 0; display: flex; justify-content: center; align-items: center;
+  background-color: rgba(0, 0, 0, .75); z-index: 9999; width: 100%;
+}
+
+.auth {
+  position: relative; max-width: 400px; width: calc(100% - 32px);
+  background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+
+.auth, .auth__wrapper { width: 100%; z-index: 9999; }
+
+.auth__content { padding: 48px 32px 24px; }
+
+.auth__title {
+  text-align: center; font-size: 20px; font-weight: 700; color: #032b41; margin-bottom: 24px;
+}
+
+button { cursor: pointer; outline: none; border: none; background-color: transparent; }
+
+/* Buttons */
+.btn { background-color: #2bd97c; color: #032b41; width: 100%; height: 40px; border-radius: 4px;
+  font-size: 16px; transition: background-color .2s; display:flex; align-items:center; justify-content:center; min-width: 180px; }
+.auth .btn:hover { filter: brightness(0.97); }
+
+.auth .btn.guest__btn--wrapper { position: relative; display:flex; background-color: #3a579d; color:#fff; justify-content:center; }
+.auth .btn.google__btn--wrapper { position: relative; display:flex; background-color: #4285f4; color:#fff; justify-content:center; }
+
+/* Icons */
+.google__icon--mask {
+  display:flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:4px; background-color:#fff; position:absolute; left:2px;
+}
+.google__icon--mask img { width:20px; height:20px; display:block; }
+.guest__icon--mask { background-color: transparent; }
+.guest__icon--mask svg { width:24px; height:24px; }
+
+/* Separator */
+.auth__separator { display:flex; align-items:center; margin:16px 0; }
+.auth__separator::before, .auth__separator::after { content:""; flex:1; height:1px; background:#e1e7ea; }
+.auth__separator--text { color:#6b7c85; font-size:12px; margin:0 8px; }
+
+/* Form */
+.auth__main--form { display:flex; flex-direction:column; gap:16px; }
+.auth__main--input { height:40px; border:2px solid #bac8ce; border-radius:4px; color:#394547; padding:0 12px; }
+.auth__msg { background:#fff4e5; color:#8a5800; border:1px solid #ffd59f; border-radius:4px; padding:8px 10px; }
+
+/* Footer actions */
+.auth__forgot--password {
+  text-align:center; color:#116be9; font-weight:300; font-size:14px; width:fit-content; margin:0 auto 16px; cursor:pointer;
+}
+.auth__switch--btn {
+  height:40px; text-align:center; background-color:#f1f6f4; color:#116be9; width:100%; border-radius:0 0 4px 4px; font-weight:300; font-size:16px;
+}
+.auth__close--btn { position:absolute; top:12px; right:12px; display:flex; cursor:pointer; transition:opacity .2s; }
+.auth__close--btn:hover { opacity:.8; }
+.auth__close--btn svg { width:28px; height:28px; }

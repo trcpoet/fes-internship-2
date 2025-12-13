@@ -1,9 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './home.css';
 import Features from '../components/Features';
+import Sidebar from '../components/Sidebar';
+import { useAuth } from '../context/AuthContext';
 
 export default function Home() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const { openAuth } = useAuth();
 
   return (
     <div className="wrapper__full">
@@ -15,7 +18,7 @@ export default function Home() {
           </figure>
 
           <ul className="nav__list--wrapper">
-            <li className="nav__list nav__list--login" onClick={() => navigate('/for-you')}>
+            <li className="nav__list nav__list--login" onClick={() => openAuth('login')}>
               Login
             </li>
             <li className="nav__list nav__list--disabled" title="Coming soon">About</li>
@@ -44,7 +47,8 @@ export default function Home() {
                   and even people who don’t like to read.
                 </div>
 
-                <button className="btn home__cta--btn" onClick={() => navigate('/for-you')}>
+                <button className="btn home__cta--btn" onClick={() => openAuth('login')}
+                  aria-label='Open Login'>
                   Login
                 </button>
               </div>
