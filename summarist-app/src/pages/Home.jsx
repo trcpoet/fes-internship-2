@@ -60,7 +60,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <Features />
     </div>
   );
