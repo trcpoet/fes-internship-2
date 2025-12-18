@@ -1,8 +1,9 @@
 // import { useNavigate } from 'react-router-dom';
 import './home.css';
 import Features from '../components/Features';
-import Sidebar from '../components/Sidebar';
 import { useAuth } from '../context/AuthContext';
+import Reviews from "../components/Reviews.jsx";
+import Numbers from "../components/Numbers.jsx";
 
 export default function Home() {
   // const navigate = useNavigate();
@@ -60,7 +61,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <Features />
+
+      <Reviews/>
+
+      <Numbers/>
+
     </div>
   );
 }

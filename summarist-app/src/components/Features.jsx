@@ -1,7 +1,6 @@
 // FILE: src/components/Features.jsx
 import React from "react";
 import StatsHeadings from "./StatsHeadings";
-import Reviews from "./Reviews";
 
 /* --- 3-up feature cards data --- */
 const features = [
@@ -37,86 +36,85 @@ const features = [
 export default function Features() {
     return (
         <>
-        <section id="features">
-            <div className="container">
-                <div className="row">
-                    <div className="section__title">Understand books in few minutes</div>
+            <section id="features">
+                <div className="container">
+                    <div className="row">
+                        <div className="section__title">Understand books in few minutes</div>
 
-                    {/* 3-up features grid */}
-                    <div className="features__wrapper">
-                        {features.map((f, i) => (
-                            <div className="features" key={i}>
-                                <div className="features__icon" aria-hidden="true">
-                                    {f.icon}
+                        {/* 3-up features grid */}
+                        <div className="features__wrapper">
+                            {features.map((f, i) => (
+                                <div className="features" key={i}>
+                                    <div className="features__icon" aria-hidden="true">
+                                        {f.icon}
+                                    </div>
+                                    <div className="features__title">{f.title}</div>
+                                    <div className="features__sub--title">{f.subtitle}</div>
                                 </div>
-                                <div className="features__title">{f.title}</div>
-                                <div className="features__sub--title">{f.subtitle}</div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* 1st statistics row: FIRST headings (left) + details (right) */}
-                    <div className="statistics__wrapper">
-                        <StatsHeadings variant="first" activeIndex={2} className= "statistics__content--header--loop" />
-                        <div className="statistics__content--details">
-                            <div className="statistics__data">
-                                <div className="statistics__data--number">93%</div>
-                                <div className="statistics__data--title">
-                                    of Summarist members <b>significantly increase</b> reading frequency.
-                                </div>
-                            </div>
-                            <div className="statistics__data">
-                                <div className="statistics__data--number">96%</div>
-                                <div className="statistics__data--title">
-                                    of Summarist members <b>establish better</b> habits.
-                                </div>
-                            </div>
-                            <div className="statistics__data">
-                                <div className="statistics__data--number">90%</div>
-                                <div className="statistics__data--title">
-                                    have made <b>significant positive</b> change to their lives.
-                                </div>
-                            </div>
+                            ))}
                         </div>
-                    </div>
 
-                    {/* 2nd statistics row: details (left) + SECOND headings (right, right-aligned) */}
-                    <div className="statistics__wrapper">
-                        <div className="statistics__content--details statistics__content--details-second">
-                            <div className="statistics__data">
-                                <div className="statistics__data--number">91%</div>
-                                <div className="statistics__data--title">
-                                    of Summarist members <b>report feeling more productive</b> after incorporating the
-                                    service into their daily routine.
+                        {/* 1st statistics row: FIRST headings (left) + details (right) */}
+                        <div className="statistics__wrapper">
+                            <StatsHeadings variant="first" activeIndex={2} className= "statistics__content--header--loop" />
+                            <div className="statistics__content--details">
+                                <div className="statistics__data">
+                                    <div className="statistics__data--number">93%</div>
+                                    <div className="statistics__data--title">
+                                        of Summarist members <b>significantly increase</b> reading frequency.
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="statistics__data">
-                                <div className="statistics__data--number">94%</div>
-                                <div className="statistics__data--title">
-                                    of Summarist members have <b>noticed an improvement</b> in their overall comprehension
-                                    and retention of information.
+                                <div className="statistics__data">
+                                    <div className="statistics__data--number">96%</div>
+                                    <div className="statistics__data--title">
+                                        of Summarist members <b>establish better</b> habits.
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="statistics__data">
-                                <div className="statistics__data--number">88%</div>
-                                <div className="statistics__data--title">
-                                    of Summarist members <b>feel more informed</b> about current events and industry trends
-                                    since using the platform.
+                                <div className="statistics__data">
+                                    <div className="statistics__data--number">90%</div>
+                                    <div className="statistics__data--title">
+                                        have made <b>significant positive</b> change to their lives.
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <StatsHeadings
-                            variant="second"
-                            activeIndex={2}
-                            className="statistics__content--header-second statistics__content--header--loop"
-                        />
+                        {/* 2nd statistics row: details (left) + SECOND headings (right, right-aligned) */}
+                        <div className="statistics__wrapper">
+                            <div className="statistics__content--details statistics__content--details-second">
+                                <div className="statistics__data">
+                                    <div className="statistics__data--number">91%</div>
+                                    <div className="statistics__data--title">
+                                        of Summarist members <b>report feeling more productive</b> after incorporating the
+                                        service into their daily routine.
+                                    </div>
+                                </div>
+                                <div className="statistics__data">
+                                    <div className="statistics__data--number">94%</div>
+                                    <div className="statistics__data--title">
+                                        of Summarist members have <b>noticed an improvement</b> in their overall comprehension
+                                        and retention of information.
+                                    </div>
+                                </div>
+                                <div className="statistics__data">
+                                    <div className="statistics__data--number">88%</div>
+                                    <div className="statistics__data--title">
+                                        of Summarist members <b>feel more informed</b> about current events and industry trends
+                                        since using the platform.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <StatsHeadings
+                                variant="second"
+                                activeIndex={2}
+                                className="statistics__content--header-second statistics__content--header--loop"
+                            />
+                        </div>
+                        {/* --- end statistics blocks --- */}
                     </div>
-                    {/* --- end statistics blocks --- */}
                 </div>
-            </div>
-        </section>
-        <Reviews/>
+            </section>
         </>
     );
 }
