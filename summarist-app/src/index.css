@@ -480,3 +480,59 @@ button { cursor: pointer; outline: none; border: none; background-color: transpa
 }
 
 
+/* Footer */
+#footer {
+    background-color: #f1f6f4;
+}
+
+.footer__top--wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 32px auto 64px;
+}
+
+.footer__block {
+    z-index: 1;
+}
+
+.footer__link--title {
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-size: 18px;
+    color: #032b41;
+}
+
+.footer__link--wrapper {
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+.footer__link {
+    color: #394547;
+    font-size: 14px;
+    cursor: not-allowed;
+}
+
+.footer__copyright--wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__copyright {
+    color: #032b41;
+    font-weight: 500;
+}
+
+/* Optional responsive (recommended) */
+@media (max-width: 900px) {
+    .footer__top--wrapper {
+        flex-wrap: wrap;
+        gap: 28px;
+    }
+}
+
+
+

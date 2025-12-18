@@ -4,6 +4,7 @@ import Features from '../components/Features';
 import { useAuth } from '../context/AuthContext';
 import Reviews from "../components/Reviews.jsx";
 import Numbers from "../components/Numbers.jsx";
+import Footer from "../components/Footer.jsx";
 
 export default function Home() {
   // const navigate = useNavigate();
@@ -62,12 +63,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/*  FEATURES SECTION*/}
       <Features />
 
+      {/* REVIEWS SECTION*/}
       <Reviews/>
 
+      {/*  NUMBERS SECTION*/}
       <Numbers/>
 
+    {/*    FOOTER SECTION*/}
+
+      <Footer/>
     </div>
   );
 }
