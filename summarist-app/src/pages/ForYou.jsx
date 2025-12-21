@@ -61,11 +61,17 @@ export default function ForYou(){
       ]);
       if(!selectedRes.ok||!recommendedRes.ok||!suggestedRes.ok) throw new Error('Fetch failed');
       const [selectedData,recommendedData,suggestedData]=await Promise.all([
-        selectedRes.json(),recommendedRes.json(),suggestedRes.json()
+        selectedRes.json(),
+        recommendedRes.json(),
+        suggestedRes.json()
       ]);
-      setSelectedBook(selectedData||null);
+
+      const selected = Array.isArray(selectedData) ? selectedData[0] : selectedData;
+      setSelectedBook(selected ?? null);      
+      
       setRecommendedBooks(Array.isArray(recommendedData)?recommendedData:[]);
       setSuggestedBooks(Array.isArray(suggestedData)?suggestedData:[]);
+      
     }catch(e){ console.error(e); setError('Something went wrong while loading books.'); }
     finally{ setLoading(false); }
   }

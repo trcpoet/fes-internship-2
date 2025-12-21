@@ -92,6 +92,14 @@ export default function AuthModal() {
   return createPortal(
     <div className="auth__wrapper" onClick={closeAuth} role="dialog" aria-modal="true">
       <div className="auth" onClick={(e) => e.stopPropagation()}>
+        <button
+          type="button"
+          className="auth__close--btn"
+          onClick={closeAuth}
+          aria-label="Close authentication modal"
+        >
+          ✕
+      </button>
         <div className="auth__content">
           <div className="auth__title">Log in to Summarist</div>
 
@@ -101,7 +109,13 @@ export default function AuthModal() {
             disabled={loading}
             onClick={() => runAuth(loginAsGuest)}
           >
-            Login as a Guest
+              <figure className="google__icon--mask guest__icon--mask" aria-hidden="true">
+                {/* simple user icon */}
+                <svg viewBox="0 0 448 512">
+                  <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
+                </svg>
+              </figure>
+            <div>Login as a Guest</div>
           </button>
 
           <div className="auth__separator">
@@ -114,7 +128,10 @@ export default function AuthModal() {
             disabled={loading}
             onClick={() => runAuth(loginWithGoogle)}
           >
-            Login with Google
+              <figure className="google__icon--mask" aria-hidden="true">
+                <img src="/assets/google.png" alt="" />
+              </figure>
+            <div>Login with Google</div>
           </button>
 
           <div className="auth__separator">

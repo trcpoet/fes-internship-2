@@ -53,14 +53,48 @@ img{
 .sidebar{background:#f7faf9;width:var(--sidebar-w);min-width:var(--sidebar-w);position:fixed;inset:0 auto 0 0;height:100vh;z-index:1000}
 .sidebar__logo{display:flex;align-items:center;justify-content:center;height:52px;padding-top:10px;max-width:120px;margin:0 auto}
 .sidebar__logo img{width:100%;height:28px}
-.sidebar__wrapper{display:flex;flex-direction:column;justify-content:space-between;height:calc(100vh - 52px);padding-bottom:14px;overflow-y:auto}
-.sidebar__link--wrapper{display:flex;align-items:center;height:40px;color:#032b41;margin-bottom:4px;cursor:pointer;padding-right:8px}
+.sidebar__wrapper{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  height:calc(100vh - 60px);
+  padding-bottom:20x;
+  overflow-y:auto
+}
+.sidebar__link--wrapper{
+  display:flex;
+  align-items:center;
+  height:40px;
+  color:#032b41;
+  margin-bottom:4px;
+  cursor:pointer;
+  padding-right:8px
+}
 .sidebar__link--wrapper:hover{background:#e8f3f0}
-.sidebar__link--wrapper.active--tab{background:#f0fff4;border-left:3px solid #2bd97c}
-.sidebar__link--line{width:3px;height:100%;background:transparent;margin-right:10px}
-.sidebar__icon--wrapper{display:flex;align-items:center;justify-content:center;margin-right:6px}
-.sidebar__icon--wrapper svg{width:18px;height:18px}
-.sidebar__link--text{font-size:13px}
+.sidebar__link--wrapper.active--tab{
+  background:#f0fff4;
+  border-left:3px solid #2bd97c;
+}
+.sidebar__link--line{
+  width:3px;
+  height:100%;
+  background:transparent;
+  margin-right:10px;
+}
+.sidebar__icon--wrapper{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:6px
+}
+
+.sidebar__icon--wrapper svg{
+  width:18px;
+  height:18px
+}
+.sidebar__link--text{
+  font-size:13px
+}
 
 /* shared layout primitives */
 .row{
@@ -74,6 +108,7 @@ img{
   padding: 40px 0;
   width: 100%;
 }
+
 .section__title {
     font-size: 32px;
     color: #032b41;
@@ -87,24 +122,100 @@ img{
 
 /* selected card – clickable anchor, directly under title (NOT centered with auto margins) */
 .selected__book{
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  width:100%;max-width:720px;            /* tight like the reference */
+  display:flex;
+  /* align-items:center; */
+  justify-content:space-between;
+  gap:24px;
+  
+  width:calc((100% / 3) * 2);
+  max-width:720px;            /* tight like the reference */
   margin:0 0 24px;                        /* left-aligned under title */
-  background:#fbefd6;border-radius:6px;padding:18px;
-  text-decoration:none;color:inherit;     /* anchor-safe */
+
+  background:#fbefd6;
+  border-radius:4px;
+  padding:24px;
+
+  margin-bottom: 24px;
+  text-decoration:none;
+  color:inherit;     /* anchor-safe */
 }
-.selected__book:hover{box-shadow:0 2px 10px rgba(3,43,65,.08)}
-.selected__book--sub-title{color:#032b41;flex:1 1 42%;font-size:14px;line-height:1.5}
-.selected__book--line{width:1px;align-self:stretch;background:#bac8ce}
-.selected__book--content{display:flex;gap:12px;flex:1 1 58%}
-.book__image--wrapper{height:112px;width:112px;min-width:112px}
-.book__image{width:100%;height:100%}
-.selected__book--text{flex:1 1 auto}
-.selected__book--title{font-weight:600;color:#032b41;margin-bottom:6px}
-.selected__book--author{font-size:14px;color:#394547;margin-bottom:10px}
-.selected__book--duration-wrapper{display:flex;align-items:center;gap:10px}
-.selected__book--icon{display:flex;align-items:center;justify-content:center;width:38px;height:38px;min-width:38px;background:#032b41;color:#fff;border-radius:50%}
-.duration-text{font-size:14px;color:#394547}
+
+.selected__book:hover{
+  box-shadow:0 2px 10px rgba(3,43,65,.08)
+}
+
+.selected__book--line{
+  width:1px;
+  align-self:stretch;
+  background:#bac8ce
+}
+
+.selected__book--content{
+  flex: 1 1 60%;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.book__image--wrapper{
+  height:140px;
+  width:140px;
+  min-width:140px;
+}
+
+.book__image{
+  width:100%;
+  height:100%
+}
+
+.selected__book--text{
+  flex:1 1 auto;
+  width: 100%;
+}
+
+.selected__book--title{
+  font-weight:600;
+  color:#032b41;
+  margin-bottom:6px
+}
+
+.selected__book--sub-title{
+  color:#032b41;
+  width: 40%;
+  /* flex:1 1 42%; */
+  font-weight: 600;
+  font-size:14px;
+  line-height:1.5
+}
+
+.selected__book--author{
+  font-size:14px;
+  color:#394547;
+  margin-bottom:10px
+}
+
+.selected__book--duration-wrapper{
+  display:flex;
+  align-items:
+  center;gap:10px
+}
+
+.selected__book--icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  min-width:38px;
+  background:#032b41;
+  color:#fff;
+  border-radius:50%
+}
+
+.duration-text{
+  font-size:14px;
+  color:#394547
+}
 
 /* sections */
 .for-you__recommended{margin-bottom:28px}
@@ -231,8 +342,21 @@ button { cursor: pointer; outline: none; border: none; background-color: transpa
   font-size: 16px; transition: background-color .2s; display:flex; align-items:center; justify-content:center; min-width: 180px; }
 .auth .btn:hover { filter: brightness(0.97); }
 
-.auth .btn.guest__btn--wrapper { position: relative; display:flex; background-color: #3a579d; color:#fff; justify-content:center; }
-.auth .btn.google__btn--wrapper { position: relative; display:flex; background-color: #4285f4; color:#fff; justify-content:center; }
+.auth .btn.guest__btn--wrapper { 
+  position: relative; 
+  display:flex; 
+  background-color: #3a579d; 
+  color:#fff; 
+  justify-content:center; 
+}
+
+.auth .btn.google__btn--wrapper { 
+  position: relative; 
+  display:flex; 
+  background-color: #4285f4;
+  color:#fff; 
+  justify-content:center; 
+}
 
 /* Icons */
 .google__icon--mask {
@@ -260,7 +384,19 @@ button { cursor: pointer; outline: none; border: none; background-color: transpa
 .auth__switch--btn {
   height:40px; text-align:center; background-color:#f1f6f4; color:#116be9; width:100%; border-radius:0 0 4px 4px; font-weight:300; font-size:16px;
 }
-.auth__close--btn { position:absolute; top:12px; right:12px; display:flex; cursor:pointer; transition:opacity .2s; }
+.auth__close--btn { 
+  position:absolute;
+  top:12px;
+  right:12px;
+  display:flex;
+  cursor:pointer;
+  transition:opacity .2s;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+}
+
 .auth__close--btn:hover { opacity:.8; }
 .auth__close--btn svg { width:28px; height:28px; }
 
