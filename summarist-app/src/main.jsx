@@ -1,4 +1,3 @@
-// src/main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -12,7 +11,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <BrowserRouter>
         <App />
-        {/* must be inside BrowserRouter for useNavigate to work */}
         <AuthModal />
       </BrowserRouter>
     </AuthProvider>

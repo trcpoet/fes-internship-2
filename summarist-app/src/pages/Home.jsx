@@ -1,18 +1,17 @@
-// import { useNavigate } from 'react-router-dom';
-import './home.css';
-import Features from '../components/Features';
-import { useAuth } from '../context/AuthContext';
+import "./home.css";
+import Features from "../components/Features";
+import { useAuth } from "../context/AuthContext";
 import Reviews from "../components/Reviews.jsx";
 import Numbers from "../components/Numbers.jsx";
 import Footer from "../components/Footer.jsx";
 
 export default function Home() {
-  // const navigate = useNavigate();
   const { openAuth } = useAuth();
 
   return (
-    <div className="wrapper__full">
-      {/* NAV */}
+    <div className="wrapper wrapper__full">
+      <div className="sidebar__overlay sidebar__overlay--hidden"></div>
+
       <nav className="nav">
         <div className="nav__wrapper">
           <figure className="nav__img--mask">
@@ -20,7 +19,7 @@ export default function Home() {
           </figure>
 
           <ul className="nav__list--wrapper">
-            <li className="nav__list nav__list--login" onClick={() => openAuth('login')}>
+            <li className="nav__list nav__list--login" onClick={() => openAuth("login")}>
               Login
             </li>
             <li className="nav__list nav__list--disabled" title="Coming soon">About</li>
@@ -30,7 +29,6 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* LANDING */}
       <section id="landing">
         <div className="container">
           <div className="row">
@@ -49,8 +47,11 @@ export default function Home() {
                   and even people who don’t like to read.
                 </div>
 
-                <button className="btn home__cta--btn" onClick={() => openAuth('login')}
-                  aria-label='Open Login'>
+                <button
+                  className="btn home__cta--btn"
+                  onClick={() => openAuth("login")}
+                  aria-label="Open Login"
+                >
                   Login
                 </button>
               </div>
@@ -63,18 +64,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/*  FEATURES SECTION*/}
       <Features />
-
-      {/* REVIEWS SECTION*/}
-      <Reviews/>
-
-      {/*  NUMBERS SECTION*/}
-      <Numbers/>
-
-    {/*    FOOTER SECTION*/}
-
-      <Footer/>
+      <Reviews />
+      <Numbers />
+      <Footer />
     </div>
   );
 }

@@ -8,7 +8,7 @@ import {
   signInWithPopup,
   signInAnonymously,
 } from "firebase/auth";
-import { auth, googleProvider } from "../lib/firebase";
+import { auth, googleProvider } from "../firebase/init";
 import { AuthCtx } from "./AuthContext";
 
  export default function AuthProvider({ children }) {
@@ -36,15 +36,32 @@ import { AuthCtx } from "./AuthContext";
   const loginAsGuest = () => signInAnonymously(auth);
 
   // modal controls
-  const openAuth = (view = "login") => { setActiveView(view); setModalOpen(true); };
+  const openAuth = (view = "login") => { 
+    setActiveView(view); 
+    setModalOpen(true); 
+  
+  };
+
   const closeAuth = () => setModalOpen(false);
 
-   const value = useMemo(() => ({
-    user, initializing,
-    modalOpen, activeView,openAuth, closeAuth, setActiveView, 
+   const value = useMemo(
+    () => ({
+    user, 
+    initializing,
+
+    modalOpen, 
+    activeView,
+    openAuth, 
+    closeAuth, 
+    setActiveView, 
+
     //auth api
-    login, register, forgot, logout,
-    loginWithGoogle, loginAsGuest,
+    login, 
+    register, 
+    forgot, 
+    logout,
+    loginWithGoogle, 
+    loginAsGuest,
    }), [user, initializing, modalOpen, activeView]);
 
   return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
