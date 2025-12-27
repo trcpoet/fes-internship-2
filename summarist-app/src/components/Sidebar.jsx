@@ -9,13 +9,13 @@ export default function Sidebar({ isOpen, onClose }) {
 
   const { user, openAuth, logout } = useAuth();
 
-  // close drawer on route change
+  // close drawer on route change (mobile)
   useEffect(() => {
     onClose?.();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
-  // lock scroll when open
+  // lock scroll when open (mobile)
   useEffect(() => {
     if (isOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
