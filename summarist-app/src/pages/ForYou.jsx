@@ -13,25 +13,30 @@ function formatDuration(seconds){
 }
 
 
-function BookCard({ book, showPremiumPill }){
-  return (
-    <Link to={`/book/${book.id}`} style={{textDecoration:'none'}}>
-      <div className="book-card" role="button" aria-label={`Open ${book.title}`}>
-        {showPremiumPill && book.subscriptionRequired && (
-          <div className="premium-badge">Premium</div>
-        )}
+function BookCard({ book, showPremiumPill }) {
+  const showPill = showPremiumPill && book.subscriptionRequired;
 
-        <img className="book-card__image" src={book.imageLink} alt={book.title}/>
+  return (
+    <Link to={`/book/${book.id}`} style={{ textDecoration: "none" }}>
+      <div className="book-card" role="button" aria-label={`Open ${book.title}`}>
+        {/* pill row (top-right, but still in normal flow) */}
+        <div className="book-card__pill-row">
+          {showPill ? <div className="premium-badge">Premium</div> : <span />}
+        </div>
+
+        <img className="book-card__image" src={book.imageLink} alt={book.title} />
         <div className="book-card__title" title={book.title}>{book.title}</div>
         <div className="book-card__author" title={book.author}>{book.author}</div>
         <div className="book-card__subtitle" title={book.subTitle}>{book.subTitle}</div>
+
         <div className="book-card__duration">
-          ⏱ {formatDuration(book.audioDuration || 204)} ⭐ {book.averageRating ?? '4.4'}
+          ⏱ {formatDuration(book.audioDuration ?? 204)} ⭐ {book.averageRating ?? "—"}
         </div>
       </div>
     </Link>
   );
 }
+
 
 
 function BookCarousel({ books, ariaLabel, showPremiumPill }){
