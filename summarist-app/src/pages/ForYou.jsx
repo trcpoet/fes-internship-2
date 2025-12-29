@@ -132,14 +132,14 @@ function CarouselSkeleton({ count = 5 }) {
 
 export default function ForYou(){
 
-  const { user } = useAuth();
-  const showPremiumPill = !user;
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [selectedBook,setSelectedBook]=useState(null);
-  const [recommendedBooks,setRecommendedBooks]=useState([]);
-  const [suggestedBooks,setSuggestedBooks]=useState([]);
-  const [loading,setLoading]=useState(true);
-  const [error,setError]=useState('');
+  const { user } = useAuth(); 
+  const showPremiumPill = !user; //show premium badge only to non-logged in users
+  const [sidebarOpen, setSidebarOpen] = useState(false); //state that controls sidebar visibility
+  const [selectedBook,setSelectedBook]=useState(null); //state that stores the selected book
+  const [recommendedBooks,setRecommendedBooks]=useState([]); //state that stores the recommended books
+  const [suggestedBooks,setSuggestedBooks]=useState([]); //state that stores the suggested books
+  const [loading,setLoading]=useState(true); //state that indicates loading status
+  const [error,setError]=useState(''); //state that stores error messages
 
   async function fetchBooks(){
     try{

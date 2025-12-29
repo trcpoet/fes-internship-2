@@ -1,5 +1,6 @@
 /* src/index.css */
 :root{
+  --sidebar-w: 200px;  /* sidebar width */
   --page-max: 980px;   /* change this to tighten/widen the page */
   --side-pad: 48px;     /* left/right breathing room */
 }
@@ -417,7 +418,16 @@ img{
 /* cards */
 .book-card{width:100%;cursor:pointer}
 
-.book-card__image{width:100%;height:240px;object-fit:cover;border-radius:4px;margin-bottom:10px;background:#f2f5f6}
+.book-card__image{
+  width:100%;
+  height: 100%;;
+  height:180px;
+  width: 180px;
+  object-fit:cover;
+  border-radius:4px;
+  margin-bottom:10px;
+  background:#f2f5f6
+}
 
 .book-card__title{
   font-size:15px;
