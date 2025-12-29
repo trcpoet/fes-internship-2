@@ -3,23 +3,28 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import { useAuth } from "../context/AuthContext";
+import { useAudioDuration } from "../hooks/useAudioDuration";
+import { formatDuration } from "../utils/formatDuration";
 
 
 
-function formatDuration(seconds){
-  if(!Number.isFinite(seconds)||seconds<=0) return '—';
-  const m=Math.floor(seconds/60), s=seconds%60;
-  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-}
+
+
+// function formatDuration(seconds){
+//   if(!Number.isFinite(seconds)||seconds<=0) return '—';
+//   const m=Math.floor(seconds/60), s=seconds%60;
+//   return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+// }
 
 
 function BookCard({ book, showPremiumPill }) {
   const showPill = showPremiumPill && book.subscriptionRequired;
 
-  return (
+  const seconds = useAudioDuration(book.audioLink);
+
+return (
     <Link to={`/book/${book.id}`} style={{ textDecoration: "none" }}>
       <div className="book-card" role="button" aria-label={`Open ${book.title}`}>
-        {/* pill row (top-right, but still in normal flow) */}
         <div className="book-card__pill-row">
           {showPill ? <div className="premium-badge">Premium</div> : <span />}
         </div>
@@ -29,8 +34,10 @@ function BookCard({ book, showPremiumPill }) {
         <div className="book-card__author" title={book.author}>{book.author}</div>
         <div className="book-card__subtitle" title={book.subTitle}>{book.subTitle}</div>
 
+        {/* ✅ use seconds from metadata */}
         <div className="book-card__duration">
-          ⏱ {formatDuration(book.audioDuration ?? 204)} ⭐ {book.averageRating ?? "—"}
+          ⏱ {formatDuration(seconds)} ⭐{" "}
+          {Number.isFinite(+book.averageRating) ? (+book.averageRating).toFixed(1) : "—"}
         </div>
       </div>
     </Link>
