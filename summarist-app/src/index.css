@@ -491,6 +491,43 @@ img{
 
 .book-card__duration{font-size:12px;color:#6b757b;margin-top:6px}
 
+/* make sure the image wrapper can show a bg + clip nicely */
+.book__image--wrapper,
+.book-card__image-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background-color 180ms ease;
+}
+
+/* if you only have .book-card__image (no wrapper), this still works */
+.book-card__image {
+  display: block;
+  width: 100%;
+  transition: transform 180ms ease;
+}
+
+/* hover effect: background behind image + slight zoom */
+.book-card:hover .book__image--wrapper,
+.book-card:hover .book-card__image-wrap {
+  background-color: rgba(3, 101, 242, 0.12);
+}
+
+.book-card:hover .book-card__image {
+  transform: scale(1.04);
+}
+
+/* accessibility: also trigger on keyboard focus */
+.book-card:focus-within .book__image--wrapper,
+.book-card:focus-within .book-card__image-wrap {
+  background-color: rgba(3, 101, 242, 0.12);
+}
+
+.book-card:focus-within .book-card__image {
+  transform: scale(1.04);
+}
+
+
+
 
 .book-card__pill-row{
   display: flex;

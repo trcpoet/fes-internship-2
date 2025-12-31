@@ -28,8 +28,9 @@ return (
         <div className="book-card__pill-row">
           {showPill ? <div className="premium-badge">Premium</div> : <span />}
         </div>
-
-        <img className="book-card__image" src={book.imageLink} alt={book.title} />
+        <figure className="book-card__image--wrapper">
+          <img className="book-card__image" src={book.imageLink} alt={book.title} />
+        </figure>
         <div className="book-card__title" title={book.title}>{book.title}</div>
         <div className="book-card__author" title={book.author}>{book.author}</div>
         <div className="book-card__subtitle" title={book.subTitle}>{book.subTitle}</div>
