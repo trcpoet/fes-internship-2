@@ -22,13 +22,19 @@ export default function Library() {
         const q = query(
           collection(db, "library"),
           where("uid", "==", user.uid)
-        );
-        const snapshot = await getDocs(q);
+        ); //"Get all documents from the library collection where the uid matches the current user's uid"
+
+        const snapshot = await getDocs(q);//getDocs runs your query against Firestore, returns a QuerySnapshot
         const data = snapshot.docs.map((doc) => ({
           id: doc.id, 
           ...doc.data()
-        }));
-        setBooks(data);
+        })); 
+        //Snapshot includes all matching documents and metadata; snapshot == "result set"
+        //snapshot.docs == array of Firestore document objects
+        //doc.id is Firestore's document ID || doc.data() is the stored fields inside the doc(like author, title, etc.)
+        //...doc.data() spreads those fields into your new object
+
+        setBooks(data); //This puts that array into a React state
       } catch (error) {
         console.error("Error fetching library:", error);
       } finally {
