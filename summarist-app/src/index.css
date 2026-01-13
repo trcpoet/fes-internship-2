@@ -2132,7 +2132,7 @@ button {
   position: relative;
   width: 100%;
   overflow-y: auto;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 140px);
   padding-bottom: 24px;
 }
 
@@ -2244,8 +2244,11 @@ button {
 }
 
 .audio__controls--btn-play svg {
+  display: flex;
   color: #042330;
-  margin-left: 4px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .audio__progress--wrapper {
@@ -2272,4 +2275,44 @@ button {
   appearance: none;
   /* Default background if not set via inline style */
   background: linear-gradient(to right, rgb(43, 217, 124) 0%, rgb(109, 120, 125) 0%);
+}
+/* Sidebar Font Size Controls */
+.sidebar__link--wrapper:last-child {
+    margin-bottom: 0;
+}
+.sidebar__font--size-wrapper {
+    display: flex;
+    margin-left: 24px;
+    gap: 8px;
+    height: auto; /* Override default 40px/56px if needed, or keep 56px per user CSS */
+    min-height: 40px;
+    padding-right: 0;
+}
+.sidebar__font--size-icon--active {
+    border-bottom: 3px solid #2bd97c;
+}
+.sidebar__font--size-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    color: #032b41;
+}
+.sidebar__font--size-icon-small {
+    width: 16px; /* Icon itself */
+    height: 16px;
+}
+.sidebar__font--size-icon-medium {
+    width: 20px;
+    height: 20px;
+}
+.sidebar__font--size-icon-large {
+    width: 24px;
+    height: 24px;
+}
+.sidebar__font--size-icon-xlarge {
+    width: 28px;
+    height: 28px;
 }
