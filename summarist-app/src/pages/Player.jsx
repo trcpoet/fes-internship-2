@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSettings } from "../context/SettingsContext";
 
 export default function Player() {
   const { id } = useParams();
+  const { fontSize } = useSettings();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   
@@ -116,7 +118,7 @@ export default function Player() {
   return (
     <div className="player__wrapper">
       <div className="summary">
-        <div className="audio__book--summary" style={{ fontSize: 16 }}>
+        <div className="audio__book--summary" style={{ fontSize: fontSize }}>
           <div className="audio__book--summary-title">
             <b>{book.title}</b>
           </div>

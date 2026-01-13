@@ -2316,3 +2316,46 @@ button {
     width: 28px;
     height: 28px;
 }
+
+/* Sidebar Font Size Controls */
+.sidebar__link--wrapper:last-child {
+    margin-bottom: 0;
+}
+.sidebar__font--size-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 12px;
+    gap: 8px;
+    height: auto; 
+    min-height: 40px;
+    padding-right: 0;
+}
+.sidebar__font--size-icon--active {
+    border-bottom: 3px solid #2bd97c;
+}
+.sidebar__font--size-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    color: #032b41;
+}
+.sidebar__font--size-icon-small {
+    width: 16px;
+    height: 16px;
+}
+.sidebar__font--size-icon-medium {
+    width: 20px;
+    height: 20px;
+}
+.sidebar__font--size-icon-large {
+    width: 24px;
+    height: 24px;
+}
+.sidebar__font--size-icon-xlarge {
+    width: 28px;
+    height: 28px;
+}

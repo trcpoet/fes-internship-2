@@ -1,6 +1,7 @@
 // src/components/Sidebar.jsx
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useSettings } from "../context/SettingsContext";
 import { useEffect } from "react";
 
 export default function Sidebar({ isOpen, onClose }) {
@@ -70,6 +71,10 @@ export default function Sidebar({ isOpen, onClose }) {
               <div className="sidebar__icon--wrapper">🔎</div>
               <div className="sidebar__link--text">Search</div>
             </div>
+
+            {location.pathname.includes("/player") && (
+                <FontSizeControls />
+            )}
           </div>
 
           <div className="sidebar__bottom">
@@ -114,5 +119,38 @@ export default function Sidebar({ isOpen, onClose }) {
         </div>
       </aside>
     </>
+  );
+}
+
+function FontSizeControls() {
+  const { fontSize, setFontSize } = useSettings();
+
+  return (
+    <div className="sidebar__link--wrapper sidebar__font--size-wrapper">
+      <div 
+        className={`sidebar__link--text sidebar__font--size-icon ${fontSize === 16 ? "sidebar__font--size-icon--active" : ""}`}
+        onClick={() => setFontSize(16)}
+      >
+        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" className="sidebar__font--size-icon-small" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M11.246 15H4.754l-2 5H.6L7 4h2l6.4 16h-2.154l-2-5zm-.8-2L8 6.885 5.554 13h4.892zM21 12.535V12h2v8h-2v-.535a4 4 0 1 1 0-6.93zM19 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path></g></svg>
+      </div>
+      <div 
+        className={`sidebar__link--text sidebar__font--size-icon ${fontSize === 20 ? "sidebar__font--size-icon--active" : ""}`}
+        onClick={() => setFontSize(20)}
+      >
+        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" className="sidebar__font--size-icon-medium" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M11.246 15H4.754l-2 5H.6L7 4h2l6.4 16h-2.154l-2-5zm-.8-2L8 6.885 5.554 13h4.892zM21 12.535V12h2v8h-2v-.535a4 4 0 1 1 0-6.93zM19 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path></g></svg>
+      </div>
+      <div 
+        className={`sidebar__link--text sidebar__font--size-icon ${fontSize === 24 ? "sidebar__font--size-icon--active" : ""}`}
+        onClick={() => setFontSize(24)}
+      >
+        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" className="sidebar__font--size-icon-large" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M11.246 15H4.754l-2 5H.6L7 4h2l6.4 16h-2.154l-2-5zm-.8-2L8 6.885 5.554 13h4.892zM21 12.535V12h2v8h-2v-.535a4 4 0 1 1 0-6.93zM19 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path></g></svg>
+      </div>
+      <div 
+        className={`sidebar__link--text sidebar__font--size-icon ${fontSize === 28 ? "sidebar__font--size-icon--active" : ""}`}
+        onClick={() => setFontSize(28)}
+      >
+        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" className="sidebar__font--size-icon-xlarge" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M11.246 15H4.754l-2 5H.6L7 4h2l6.4 16h-2.154l-2-5zm-.8-2L8 6.885 5.554 13h4.892zM21 12.535V12h2v8h-2v-.535a4 4 0 1 1 0-6.93zM19 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path></g></svg>
+      </div>
+    </div>
   );
 }
