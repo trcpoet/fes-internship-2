@@ -38,7 +38,10 @@ export default function Sidebar({ isOpen, onClose }) {
           <img src="/assets/logo.png" alt="Summarist" />
         </div>
 
-        <div className="sidebar__wrapper">
+        <div 
+          className="sidebar__wrapper" 
+          style={{ height: location.pathname.includes("/player") ? "calc(100vh - 140px)" : "" }}
+        >
           <div className="sidebar__top">
             <Link to="/for-you" style={{ textDecoration: "none" }}>
               <div className={`sidebar__link--wrapper ${isActive("/for-you") ? "active--tab" : ""}`}>
