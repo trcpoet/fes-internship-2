@@ -6,6 +6,7 @@ import { useEffect } from "react";
 export default function Sidebar({ isOpen, onClose }) {
   const location = useLocation();
   const isActive = (p) => location.pathname === p;
+  //useLocation gives info about current page/route, which we use to highlight sidebar or not for ForYou/Library or Home/Sales
 
   const { user, openAuth, logout } = useAuth();
 

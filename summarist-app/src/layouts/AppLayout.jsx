@@ -6,7 +6,6 @@ import Sidebar from "../components/Sidebar";
 export default function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [query, setQuery] = useState("");
-
   const navigate = useNavigate();
 
   function runSearch(e) {
@@ -44,17 +43,9 @@ export default function AppLayout() {
                       <path d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 1 0 14 15.5l.27.28h.79L20 21.5 21.5 20l-6-6zM9.5 14A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z" />
                     </svg>
                   </button>
-
-
-
-                  
                 </form>
-                                
-
-
               </div>
 
-              
                 <button
                     type="button"
                     className="sidebar__toggle--btn"
@@ -65,7 +56,6 @@ export default function AppLayout() {
                     <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
                     </svg>
                 </button>
-
 
             </div>
           </div>
