@@ -29,10 +29,12 @@ export default function Settings() {
           <>
             <div className="setting__content">
               <div className="settings__sub--title">Your Subscription plan</div>
-              <div className="settings__text">premium</div>
-              <button className="btn settings__login--btn" onClick={() => navigate('/choose-plan')} style={{ marginTop: '12px' }}>
-                Upgrade
-              </button>
+              <div className="settings__text">{user.plan}</div>
+              {user.plan !== 'premium' && (
+                <button className="btn settings__login--btn" onClick={() => navigate('/choose-plan')} style={{ marginTop: '12px' }}>
+                  Upgrade
+                </button>
+              )}
             </div>
             <div className="setting__content">
               <div className="settings__sub--title">Email</div>

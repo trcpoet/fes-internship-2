@@ -95,7 +95,7 @@ export default function Sidebar({ isOpen, onClose }) {
             {!user ? (
               <button
                 type="button"
-                onClick={() => openAuth("login")}
+                onClick={() => openAuth()}
                 className="sidebar__link--wrapper"
                 style={{ width: "100%", background: "transparent", border: "none", textAlign: "left", cursor: "pointer" }}
               >

@@ -131,7 +131,7 @@ function CarouselSkeleton({ count = 5 }) {
 
 export default function ForYou() {
   const { user } = useAuth();
-  const showPremiumPill = !user;
+  const showPremiumPill = !user || user?.plan === 'basic';
 
   const [selectedBook, setSelectedBook] = useState(null);
   const [recommendedBooks, setRecommendedBooks] = useState([]);

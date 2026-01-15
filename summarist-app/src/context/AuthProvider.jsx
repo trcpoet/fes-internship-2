@@ -23,22 +23,34 @@ import { AuthCtx } from "./AuthContext";
     useEffect(() => {
      const off = onAuthStateChanged(auth, async (u) => {
        if (u) {
-         // User is logged in, fetch/create Firestore doc
-         const docRef = doc(db, "users", u.uid);
-         const docSnap = await getDoc(docRef);
+         try {
+           // User is logged in, fetch/create Firestore doc
+           const docRef = doc(db, "users", u.uid);
+           const docSnap = await getDoc(docRef);
 
-         if (!docSnap.exists()) {
-           // Create new user doc with default 'basic' plan
-           await setDoc(docRef, {
-             uid: u.uid,
-             email: u.email,
-             plan: "basic",
-           });
-           setUser({ ...u, plan: "basic" });
-         } else {
-           // User exists, read their plan
-           const data = docSnap.data();
-           setUser({ ...u, plan: data.plan });
+           if (!docSnap.exists()) {
+             // Create new user doc
+             // Guests get 'premium', others get 'basic'
+             const defaultPlan = u.isAnonymous ? "premium" : "basic";
+             
+             await setDoc(docRef, {
+               uid: u.uid,
+               email: u.email || "", // Ensure no undefined
+               plan: defaultPlan,
+             });
+             setUser({ ...u, plan: defaultPlan });
+           } else {
+             // User exists, read their plan
+             const data = docSnap.data();
+             // Determine plan: prioritize Firestore, fallback to logic if missing
+             const existingPlan = data.plan || (u.isAnonymous ? "premium" : "basic");
+             setUser({ ...u, plan: existingPlan });
+           }
+         } catch (error) {
+           console.error("Auth Error (Firestore sync failed):", error);
+           // Fallback: Use auth data but assume default plan to keep app working
+           const fallbackPlan = u.isAnonymous ? "premium" : "basic";
+           setUser({ ...u, plan: fallbackPlan });
          }
        } else {
          setUser(null);

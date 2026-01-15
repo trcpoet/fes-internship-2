@@ -3,10 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSettings } from "../context/SettingsContext";
 
+import loginImage from "../assets/login.png";
+
 export default function Player() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, openAuth } = useAuth();
   const { fontSize } = useSettings();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,8 +30,8 @@ export default function Player() {
         if (!res.ok) throw new Error("Failed to load book");
         const data = await res.json();
         
-        // Protect route
-        if (data.isPremium && (!user || user.plan !== 'premium')) {
+        // Protect route: Block only if user is logged in AND basic AND book is premium
+        if (data.isPremium && user && user.plan !== 'premium') {
              navigate('/choose-plan');
              return;
         }
@@ -123,6 +125,25 @@ export default function Player() {
             </div>
         </div>
       );
+  }
+
+  if (!user) {
+    return (
+      <div className="player__wrapper">
+        <div className="summary">
+          <div className="audio__book--summary">
+            <div className="audio__book--summary-title">
+              <b>{book.title}</b>
+            </div>
+          </div>
+          <div className="summary__login--wrapper">
+             <img src={loginImage} alt="Login" className="summary__login--img" />
+             <div className="summary__login--text">Log in to your account to read and listen to the book</div>
+             <button className="btn settings__login--btn" onClick={() => openAuth("login")}>Login</button>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (

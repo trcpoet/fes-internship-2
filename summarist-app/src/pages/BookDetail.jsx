@@ -90,7 +90,7 @@ export default function BookDetail() {
       authorDescription: b.authorDescription || b.aboutAuthor || "",
       imageLink: b.imageLink || "",
       audioLink: b.audioLink || "",
-      isPremium: b.isPremium || b.premium || false,
+      isPremium: b.subscriptionRequired || b.isPremium || b.premium || false,
     };
   }, [book]);
 
