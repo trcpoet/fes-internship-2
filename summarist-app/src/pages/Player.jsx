@@ -68,6 +68,10 @@ export default function Player() {
 
   // Controls
   const togglePlay = () => {
+    if (!user) {
+      openAuth("login");
+      return;
+    }
     if (!audioRef.current) return;
     if (isPlaying) {
       audioRef.current.pause();
@@ -127,25 +131,6 @@ export default function Player() {
       );
   }
 
-  if (!user) {
-    return (
-      <div className="player__wrapper">
-        <div className="summary">
-          <div className="audio__book--summary">
-            <div className="audio__book--summary-title">
-              <b>{book.title}</b>
-            </div>
-          </div>
-          <div className="summary__login--wrapper">
-             <img src={loginImage} alt="Login" className="summary__login--img" />
-             <div className="summary__login--text">Log in to your account to read and listen to the book</div>
-             <button className="btn settings__login--btn" onClick={() => openAuth("login")}>Login</button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="player__wrapper">
       <div className="summary">
@@ -154,7 +139,15 @@ export default function Player() {
             <b>{book.title}</b>
           </div>
           <div className="audio__book--summary-text">
-             {book.summary}
+             {!user ? (
+                <div className="summary__login--wrapper">
+                   <img src={loginImage} alt="Login" className="summary__login--img" />
+                   <div className="summary__login--text">Log in to your account to read and listen to the book</div>
+                   <button className="btn settings__login--btn" onClick={() => openAuth("login")}>Login</button>
+                </div>
+             ) : (
+                book.summary
+             )}
           </div>
         </div>
         
@@ -162,7 +155,12 @@ export default function Player() {
           <audio 
             ref={audioRef} 
             src={book.audioLink} 
-            autoPlay 
+            // Remove autoPlay for guests or handle via logic
+            // But if user is !user, we probably shouldn't autoplay or allow play.
+            // However, existing code had autoPlay.
+            // If !user, we want to block play. 
+            // Best to only autoPlay if user exists.
+            autoPlay={!!user}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
           ></audio>
