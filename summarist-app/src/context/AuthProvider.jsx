@@ -8,7 +8,8 @@ import {
   signInWithPopup,
   signInAnonymously,
 } from "firebase/auth";
-import { auth, googleProvider } from "../firebase/init";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, db, googleProvider } from "../firebase/init";
 import { AuthCtx } from "./AuthContext";
 
  export default function AuthProvider({ children }) {
@@ -19,9 +20,29 @@ import { AuthCtx } from "./AuthContext";
    const [modalOpen, setModalOpen] = useState(false);
    const [activeView, setActiveView] = useState("login"); // 'login' | 'register' | 'forgot'
  
-   useEffect(() => {
-     const off = onAuthStateChanged(auth, (u) => {
-       setUser(u || null);
+    useEffect(() => {
+     const off = onAuthStateChanged(auth, async (u) => {
+       if (u) {
+         // User is logged in, fetch/create Firestore doc
+         const docRef = doc(db, "users", u.uid);
+         const docSnap = await getDoc(docRef);
+
+         if (!docSnap.exists()) {
+           // Create new user doc with default 'basic' plan
+           await setDoc(docRef, {
+             uid: u.uid,
+             email: u.email,
+             plan: "basic",
+           });
+           setUser({ ...u, plan: "basic" });
+         } else {
+           // User exists, read their plan
+           const data = docSnap.data();
+           setUser({ ...u, plan: data.plan });
+         }
+       } else {
+         setUser(null);
+       }
        setInitializing(false);
      });
      return () => off();

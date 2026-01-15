@@ -1,9 +1,12 @@
+import { useAuth } from "../context/AuthContext";
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSettings } from "../context/SettingsContext";
 
 export default function Player() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const { fontSize } = useSettings();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -24,6 +27,13 @@ export default function Player() {
         );
         if (!res.ok) throw new Error("Failed to load book");
         const data = await res.json();
+        
+        // Protect route
+        if (data.isPremium && (!user || user.plan !== 'premium')) {
+             navigate('/choose-plan');
+             return;
+        }
+
         setBook(data);
       } catch (error) {
         console.error(error);
@@ -32,7 +42,7 @@ export default function Player() {
       }
     }
     if (id) fetchBook();
-  }, [id]);
+  }, [id, user, navigate]);
 
   // Audio event listeners
   useEffect(() => {

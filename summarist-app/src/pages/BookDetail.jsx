@@ -103,12 +103,7 @@ export default function BookDetail() {
       return;
     }
 
-    // Check if user has subscription
-    // Assuming user.isSubscribed or similar field exists. 
-    // If not, we might need to check a remote source or a different property.
-    const isSubscribed = !!user.isSubscribed; 
-    
-    if (view.isPremium && !isSubscribed) {
+    if (view.isPremium && user.plan !== 'premium') {
       navigate("/choose-plan");
       return;
     }

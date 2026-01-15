@@ -14,13 +14,13 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/choose-plan" element={<ChoosePlan />} />
 
       {/* Everything inside here shows Sidebar + SearchBar */}
       <Route element={<AppLayout />}>
         <Route path="/for-you" element={<ForYou />} />
         <Route path="/book/:id" element={<BookDetail />} />
         <Route path="/player/:id" element={<Player />} />
-        <Route path="/choose-plan" element={<ChoosePlan />} />
         <Route path="/settings" element={<Settings />} />
 
         {/* Add these if you plan to navigate to them */}

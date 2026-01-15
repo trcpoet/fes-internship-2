@@ -2456,6 +2456,7 @@ button {
   font-size: 14px;
   color: #242424;
 }
+
 /* Spinner */
 .spinner {
   width: 48px;
@@ -2472,6 +2473,7 @@ button {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -2482,4 +2484,335 @@ button {
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+
+/* Plan / Pricing Page */
+.plan {
+  width: 100%;
+}
+
+.plan__header--wrapper {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  padding-top: 48px;
+  margin-bottom: 24px;
+}
+
+.plan__header--wrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: #032b41;
+  border-bottom-right-radius: 16rem;
+  border-bottom-left-radius: 16rem;
+}
+
+.plan__header {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #fff;
+  padding: 0 24px;
+}
+
+.plan__title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.plan__sub--title {
+  font-size: 20px;
+  margin-bottom: 32px;
+}
+
+.plan__img--mask {
+  display: flex;
+  justify-content: center;
+  max-width: 340px;
+  margin: 0 auto;
+  border-radius: 180px 180px 0 0;
+  overflow: hidden;
+}
+
+.plan__img--mask img {
+  width: 100%;
+  height: 100%;
+}
+
+.plan__features--wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  text-align: center;
+  grid-gap: 24px;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto 56px;
+}
+
+.plan__features--icon {
+  display: flex;
+  justify-content: center;
+  color: #032b41;
+  margin-bottom: 12px;
+}
+
+.plan__features--icon svg {
+  width: 60px;
+  height: 60px;
+}
+
+.plan__features--text {
+  color: #394547;
+  line-height: 1.5;
+}
+
+/* Plan Cards (Styles from User or Keeping Existing if not overridden) */
+/* User did NOT provide specific card styles in the block, 
+   so I will keep the ones I wrote previously below, only replacing
+   the ones that Conflict. 
+   Wait, the user block implies a full replacement of "styles to include". 
+   To be safe, I should keep the card layout styles I inferred unless
+   specifically contradicted.
+   The user gave .plan__card--cta but not .plan__card itself. 
+   I will KEEP .plan__card etc definitions that aren't in the user block. 
+*/
+
+.plan__card {
+  display: flex;
+  align-items: center;
+  border: 2px solid #e1e7ea;
+  border-radius: 4px;
+  padding: 24px;
+  cursor: pointer;
+  max-width: 680px;
+  margin: 0 auto;
+  background: #fff;
+  transition: all 0.2s;
+}
+
+.plan__card.plan__card--active {
+  border-color: #2bd97c;
+  background-color: #f3fdf8;
+}
+
+.plan__card--circle {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #032b41;
+  border-radius: 50%;
+  margin-right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plan__card--dot {
+  width: 12px;
+  height: 12px;
+  background-color: #032b41;
+  border-radius: 50%;
+}
+
+.plan__card--content {
+  flex: 1;
+}
+
+.plan__card--title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #032b41;
+  margin-bottom: 4px;
+}
+
+.plan__card--price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #032b41;
+  margin-bottom: 8px;
+}
+
+.plan__card--text {
+  font-size: 14px;
+  color: #6b757b;
+}
+
+.plan__card--separator {
+  max-width: 680px;
+  margin: 16px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.plan__separator {
+  background: #fff;
+  padding: 0 12px;
+  color: #6b757b;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 1;
+}
+
+.plan__card--separator::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: #e1e7ea;
+  z-index: 0;
+}
+
+.plan__card--cta {
+  background: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.plan__disclaimer {
+  font-size: 12px;
+  color: #6b757b;
+  margin-top: 12px;
+}
+
+/* FAQ Accordion */
+.faq__wrapper {
+  max-width: 680px;
+  margin: 0 auto 80px;
+}
+
+.accordion__card {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.accordion__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 24px 0;
+  gap: 8px;
+}
+
+.accordion__title {
+  font-weight: 500;
+  font-size: 24px;
+  position: relative;
+  margin-bottom: 0;
+  color: #032b41;
+  transition: .3s;
+}
+
+.accordion__icon {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+  color: #032b41;
+}
+
+.accordion__icon--rotate {
+  transform: rotate(180deg);
+}
+
+.collapse {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion__body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #394547;
+  padding-bottom: 24px;
+}
+
+/* Footer */
+#footer {
+  background-color: #f1f6f4;
+  padding: 40px 0;
+  margin-top: auto;
+}
+
+.footer__top--wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 32px auto 64px;
+}
+
+.footer__block {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__link--title {
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: #032b41;
+}
+
+.footer__link--wrapper {
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.footer__link {
+  color: #394547;
+  font-size: 14px;
+  cursor: not-allowed;
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.footer__copyright--wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-size: 14px;
+  color: #394547;
+}
+
+/* Button overrides from request */
+.btn {
+  background-color: #2bd97c;
+  color: #032b41;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}
+
+@media (max-width: 768px) {
+  .plan__features--wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
