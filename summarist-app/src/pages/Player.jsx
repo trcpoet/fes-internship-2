@@ -95,8 +95,8 @@ export default function Player() {
     return (
         <div className="player__wrapper">
             <div className="summary">
-                <div className="audio__book--summary">
-                    <div className="audio__book--summary-title">Loading...</div>
+                <div className="spinner--wrapper">
+                    <div className="spinner"></div>
                 </div>
             </div>
         </div>
