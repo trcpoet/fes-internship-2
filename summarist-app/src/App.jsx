@@ -8,7 +8,6 @@ import ChoosePlan from "./pages/ChoosePlan";
 import Settings from "./pages/Settings";
 import AppLayout from "./layouts/AppLayout";
 import Library from "./pages/Library";
-// import Search from "./pages/Search";
 
 export default function App() {
   return (
@@ -25,7 +24,6 @@ export default function App() {
 
         {/* Add these if you plan to navigate to them */}
         <Route path="/library" element={<Library />} />
-        {/* <Route path="/search" element={<Search />} /> */}
       </Route>
     </Routes>
   );

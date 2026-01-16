@@ -1,4 +1,6 @@
 import "./home.css";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Features from "../components/Features";
 import { useAuth } from "../context/AuthContext";
 import Reviews from "../components/Reviews.jsx";
@@ -6,7 +8,14 @@ import Numbers from "../components/Numbers.jsx";
 import Footer from "../components/Footer.jsx";
 
 export default function Home() {
-  const { openAuth } = useAuth();
+  const { openAuth, user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/for-you");
+    }
+  }, [user, navigate]);
 
   return (
     <div className="wrapper wrapper__full">
