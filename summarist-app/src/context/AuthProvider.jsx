@@ -20,13 +20,14 @@ import { AuthCtx } from "./AuthContext";
    const [modalOpen, setModalOpen] = useState(false);
    const [activeView, setActiveView] = useState("login"); // 'login' | 'register' | 'forgot'
  
+   // auth state
     useEffect(() => {
      const off = onAuthStateChanged(auth, async (u) => {
        if (u) {
          try {
            // User is logged in, fetch/create Firestore doc
-           const docRef = doc(db, "users", u.uid);
-           const docSnap = await getDoc(docRef);
+           const docRef = doc(db, "users", u.uid); // Get Firestore doc
+           const docSnap = await getDoc(docRef); // Get doc data
 
            if (!docSnap.exists()) {
              // Create new user doc
@@ -57,6 +58,7 @@ import { AuthCtx } from "./AuthContext";
        }
        setInitializing(false);
      });
+     // cleanup
      return () => off();
    }, []);
 

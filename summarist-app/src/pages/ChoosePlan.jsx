@@ -1,14 +1,41 @@
 import React, { useState } from 'react';
 import PricingTop from '../assets/pricing-top.png';
 import { useAuth } from '../context/AuthContext';
+import { getCheckoutUrl } from '../utils/StripePayment';
+import { PRICE_IDS } from '../constants/plans';
 
 export default function ChoosePlan() {
   const [selectedPlan, setSelectedPlan] = useState('yearly'); // 'yearly' | 'monthly'
   const [accordionOpen, setAccordionOpen] = useState(0); // Index of open accordion, 0 initially? Or null.
-  const { openAuth } = useAuth();
+  const { openAuth, user } = useAuth();
+  const [loading, setLoading] = useState(false);
 
   const toggleAccordion = (index) => {
     setAccordionOpen(accordionOpen === index ? null : index);
+  };
+
+  const handleCheckout = async () => {
+    if (!user) {
+      openAuth("login");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const priceId = selectedPlan === 'yearly' 
+        ? PRICE_IDS.PREMIUM_YEARLY 
+        : PRICE_IDS.PREMIUM_MONTHLY;
+      
+      const url = await getCheckoutUrl(priceId);
+      if (url) {
+        window.location.assign(url);
+      }
+    } catch (error) {
+       console.error("Checkout failed:", error);
+       alert("Failed to start checkout. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -130,9 +157,9 @@ export default function ChoosePlan() {
             
             <div className="plan__card--cta">
               <span className="btn--wrapper">
-                <button className="btn" style={{ width: '300px' }} onClick={() => openAuth()}>
+                <button className="btn" style={{ width: '300px' }} onClick={handleCheckout} disabled={loading}>
                   <span>
-                    {selectedPlan === 'yearly' ? 'Start your free 7-day trial' : 'Start Premium Monthly'}
+                    {loading ? 'Processing...' : (selectedPlan === 'yearly' ? 'Start your free 7-day trial' : 'Start Premium Monthly')}
                   </span>
                 </button>
               </span>
